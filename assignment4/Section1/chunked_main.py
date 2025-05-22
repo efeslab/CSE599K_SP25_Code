@@ -1,5 +1,12 @@
 from chunked_engine import Engine
 from chunked_scheduler import Scheduler, InputRequest
+import numpy as np
+
+def sample_lognormal_ints(l, mean=6.0, sigma=0.7):
+    samples = np.random.lognormal(mean, sigma, size=l)
+    return [int(round(x)) for x in samples]
+
+
 engine = Engine()
 scheduler = Scheduler(engine, token_batch_size=1024)
 
